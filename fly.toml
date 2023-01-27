@@ -1,11 +1,15 @@
-# fly.toml file generated for ka on 2023-01-26T20:29:02-03:00
+# fly.toml file generated for kagarisoft-repo on 2023-01-27T18:41:27-03:00
 
-app = "ka"
+app = "kagarisoft-repo"
 kill_signal = "SIGINT"
 kill_timeout = 5
 
 [env]
   PORT = "8080"
+
+[mounts]
+  destination = "/data"
+  source = "persistent"
 
 [[services]]
   internal_port = 8080
@@ -18,7 +22,3 @@ kill_timeout = 5
   [[services.ports]]
     handlers = ["tls", "http"]
     port = "443"
-
-[mounts]
-source="persistent"
-destination="/data"

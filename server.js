@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(cors("*"));
-app.use('/repositories', express.static(path.join(__dirname, 'src', 'repositories')))
+app.use('/repositories', express.static(path.join(__dirname, 'data', 'repositories')))
 
 app.use("/api", endpoints)
 
