@@ -179,25 +179,6 @@ const getRepos = async (req, res) => {
       }
 }
 
-const getToken = (req, res, next) => {
-      const bearerHeader = req.headers['authorization'];
-      const secretHeader = req.headers['secret_key'];
-
-      if (typeof bearerHeader !== 'undefined') {
-            const bearerToken = bearerHeader.split(" ")[1];
-            req.token = bearerToken;
-            req.secret = secretHeader
-            next();
-      } else {
-            res.status(403).json({
-                  status: res.statusCode,
-                  error: {
-                        message: "Invalid token"
-                  }
-            })
-      }
-}
-
 module.exports = {
       uploadFile,
       getAllFromRepo,
