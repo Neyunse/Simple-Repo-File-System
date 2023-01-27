@@ -19,8 +19,7 @@ jwt.sign({ admin }, secretkey, (err, token) => {
             const data = {
                   admin_jwt: {
                         token: token,
-                        secret_key: secretkey,
-                        expiresIn: 60 * 60 * 1000
+                        secret_key: secretkey
                   }
             }
 
