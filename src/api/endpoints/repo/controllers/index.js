@@ -79,9 +79,9 @@ const getAllFromRepo = async (req, res) => {
             if (!repo) throw new Error("Mising repo")
             const r = await rp.getByRepo(repo)
 
-            res.status(200).json(r)
+            return res.json(r)
       } catch (error) {
-            res.status(400).json({
+            res.json({
                   error: {
                         message: error.message
                   }
@@ -100,10 +100,10 @@ const getVersionFromRepo = async (req, res) => {
 
             const r = await rp.getVersionByRepo(repo, ver)
 
-            res.status(200).json(r)
+            return res.json(r)
 
       } catch (error) {
-            res.status(400).json({
+            res.json({
                   error: {
                         message: error.message
                   }
@@ -118,9 +118,9 @@ const compareVersions = async (req, res) => {
             if (!repo) throw new Error("Mising repo")
             const r = await rp.compareVersion(repo)
 
-            res.status(200).json(r)
+            return res.json(r)
       } catch (error) {
-            res.status(400).json({
+            res.json({
                   error: {
                         message: error.message
                   }
@@ -137,10 +137,10 @@ const latestVersion = async (req, res) => {
 
             const r = await rp.getVersionByRepo(repo, c[0])
 
-            res.status(200).json(r)
+            return res.json(r)
 
       } catch (error) {
-            res.status(400).json({
+            res.json({
                   error: {
                         message: error.message
                   }
@@ -158,10 +158,10 @@ const deleteById = async (req, res) => {
             if (!repoid) throw new Error("Mising repo id")
 
             const r = await rp.delById(repoid);
-            res.status(200).json({ ...r });
+            return res.json({ ...r });
 
       } catch (error) {
-            res.status(400).json({
+            res.json({
                   error: {
                         message: error.message
                   }
@@ -173,9 +173,9 @@ const deleteById = async (req, res) => {
 const getRepos = async (req, res) => {
       try {
             const r = await rp.getRepos();
-            res.status(200).json(r);
+            return res.json(r);
       } catch (error) {
-            console.log(error)
+            res.json(error);
       }
 }
 

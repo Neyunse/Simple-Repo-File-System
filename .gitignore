@@ -2,4 +2,4 @@
 /yarn.lock
 .env
 /tmp
-/repositories/*
+/data/repositories/*
