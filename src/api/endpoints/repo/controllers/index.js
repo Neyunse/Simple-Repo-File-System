@@ -3,7 +3,7 @@ const src = path.dirname(path.resolve('src'))
 const uniqid = require("uniqid")
 const fs = require('fs');
 const { Repo } = require('../models')
-const rp = new Repo(path.join(src, '/src/DB/repos.json'))
+const rp = new Repo(path.join(src, '/data/DB/repos.json'))
 const increment = require('version-incrementer').increment;
 
 const uploadFile = async (req, res) => {
@@ -34,10 +34,10 @@ const uploadFile = async (req, res) => {
 
             const rep = ver ? `repositories/${repo}/${ver}` : `repositories/${repo}/${version}`
 
-            if (!fs.existsSync(path.join(src, `/src/${rep}`))) await fs.mkdirSync(path.join(src, `/src/${rep}`), { recursive: true })
+            if (!fs.existsSync(path.join(src, `/data/${rep}`))) await fs.mkdirSync(path.join(src, `/data/${rep}`), { recursive: true })
 
-            if (fs.existsSync(path.join(src, `/src/${rep}`))) {
-                  const pathOut = path.join(src, `/src/${rep}/${fileUp.name}`);
+            if (fs.existsSync(path.join(src, `/data/${rep}`))) {
+                  const pathOut = path.join(src, `/data/${rep}/${fileUp.name}`);
 
                   const data = {
                         id: uniqid(),
