@@ -20,7 +20,11 @@ app.use('/repositories', express.static(path.join(__dirname, 'src', 'repositorie
 
 app.use("/api", endpoints)
 
-
+app.get('*', function(req, res){
+      res.status(404).json({
+            status: 404
+      })
+});
 
 app.listen(PORT, () => {
       console.log(`http://localhost:${PORT}`)

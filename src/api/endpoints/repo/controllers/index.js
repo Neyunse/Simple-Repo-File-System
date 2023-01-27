@@ -9,14 +9,6 @@ const increment = require('version-incrementer').increment;
 
 const uploadFile = async (req, res) => {
 
-      // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6dHJ1ZSwiaWF0IjoxNjc0Nzc4MzY3fQ.PcIj9zBOXLuePymPs9j5-JK_P4s_am2HycmpjW07GGQ
-
-      // secretkey
-
-
-      // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6ZmFsc2UsImlhdCI6MTY3NDc3OTYzNn0.ZY5aAAd1khaux4GiqWfa1sDJ0NiDQToUWWyDSNMViSE
-
-      // pepito
       try {
             const { files, body } = req
 
