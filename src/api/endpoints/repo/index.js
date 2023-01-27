@@ -10,14 +10,24 @@ const {
       getRepos
 } = require("./controllers")
 
-const { getToken, verifyToken } = require("./controllers/auth")
+const { getToken, verifyAdminToken, verifyGuestToken } = require("./controllers/auth")
 
-r.get('/all', getToken, verifyToken, getRepos)
-r.delete("/:repoid", getToken, verifyToken, deleteById);
-r.get("/:repo?",getToken, verifyToken, getAllFromRepo);
-r.get("/:repo?/:ver?", getToken, verifyToken, getVersionFromRepo);
-r.get("/:repo?/versions/historic", getToken, verifyToken,compareVersions);
-r.get("/:repo?/versions/latest", getToken, verifyToken,latestVersion);
-r.post("/upload/:repo?", getToken, verifyToken, uploadFile);
+// Admin endpoints
+r.get('/all', getToken, verifyAdminToken, getRepos)
+
+r.post("/upload/:repo?", getToken, verifyAdminToken, uploadFile);
+
+r.delete("/:repoid", getToken, verifyAdminToken, deleteById);
+
+
+// Guest endpoints
+r.get("/:repo?", getToken, verifyGuestToken, getAllFromRepo);
+
+r.get("/:repo?/:ver?", getToken, verifyGuestToken, getVersionFromRepo);
+
+r.get("/:repo?/versions/historic", getToken, verifyGuestToken, compareVersions);
+
+r.get("/:repo?/versions/latest", getToken, verifyGuestToken, latestVersion);
+
 
 module.exports = { r }

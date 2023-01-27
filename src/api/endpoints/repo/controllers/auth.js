@@ -19,19 +19,33 @@ const getToken = (req, res, next) => {
       }
 }
 
-const verifyToken = (req, res, next) => { 
+const verifyAdminToken = (req, res, next) => { 
       jwt.verify(req.token, req.secret, (error, authData) => {
 
             if (error) res.status(403).json({ error })
 
             if (authData) {
-                  if (!authData.admin) res.status(403).json({ message: "" })
+                  if (!authData.admin) res.status(403).json({ message: "You do not have the necessary permissions" })
                   next()
             }
       })
 }
 
+const verifyGuestToken = (req, res, next) => { 
+      jwt.verify(req.token, req.secret, (error, authData) => {
+
+            if (error) res.status(403).json({ error })
+
+            if (authData) {
+                  if (!authData.guest || !authData.admin) res.status(403).json({ message: "You do not have the necessary permissions" })
+                  next()
+            }
+      })
+}
+
+
 module.exports = {
-      verifyToken,
+      verifyGuestToken,
+      verifyAdminToken,
       getToken
 }
