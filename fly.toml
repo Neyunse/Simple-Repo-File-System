@@ -18,3 +18,7 @@ kill_timeout = 5
   [[services.ports]]
     handlers = ["tls", "http"]
     port = "443"
+
+[mounts]
+source="repofolder"
+destination="/src/repositories"
