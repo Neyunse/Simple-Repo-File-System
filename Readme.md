@@ -1,4 +1,6 @@
-## How to use
+## JWT Authentication
+
+### Admin
 
 By default it is required to generate a `jwt` and `secret_key` to make the requests, for this you must use: 
 
@@ -13,11 +15,21 @@ With the generated token and also the secret key you can make the requests, to m
 ```
 curl 'http://localhost:8080/api/repo/test-repo' \
 -H "secret_key: SECRET_KEY" \
--H "Authorization: Bearer ADMIN_TOKEN"
+-H "Authorization: Bearer TOKEN"
 ```
+
+> Admin JWTs do not expire, it can be used as many times as you want.
+### Guest
+
+By default this is disabled, if you want to enable it you must go to the .env or set GUEST_JWT to true in the environment variables. And the usage is exactly like the admin JWT,but only read is allowed.
+
+> Guest JWTs expire after 1h, after that you need to generate a new one.
 
 ## API Endpoints
 
+### Guest
+
+* '/api/guest/generate/token' (GET)
 
 ### Repos
 
