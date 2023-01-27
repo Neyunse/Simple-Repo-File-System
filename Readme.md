@@ -8,7 +8,7 @@ It is required to generate a `jwt` and `secret_key` to make the requests, for th
 
 ```npm run token```
 
-> You can modify the default value of `secret_key` in `generateAdminToken.js`, and it is highly recommended to do so.
+> You can modify the default value of `secret_key` in `.env`, and it is highly recommended to do so.
 
 With the generated token and also the secret key you can make the requests, to make a request just add the token and in the "Headers" section include a new header called "secret_key" and its value has to be the same that you used to generate the token.
 
