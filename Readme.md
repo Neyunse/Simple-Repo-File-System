@@ -2,7 +2,7 @@
 
 ### Admin
 
-By default it is required to generate a `jwt` and `secret_key` to make the requests, for this you must use: 
+It is required to generate a `jwt` and `secret_key` to make the requests, for this you must use: 
 
 ```yarn token```
 
