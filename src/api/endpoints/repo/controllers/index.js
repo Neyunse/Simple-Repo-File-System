@@ -3,12 +3,13 @@ const src = path.dirname(path.resolve('src'))
 const uniqid = require("uniqid")
 const fs = require('fs');
 const { Repo } = require('../models')
-const rp = new Repo(path.join(src, '/data/DB/repos.json'))
+const rp = new Repo(path.join(src, '/data/DB/repositories.json'))
 const increment = require('version-incrementer').increment;
 
 const uploadFile = async (req, res) => {
 
       try {
+
             const { files, body } = req
 
             if (!files) {
@@ -16,7 +17,6 @@ const uploadFile = async (req, res) => {
 
                   throw new Error("Invalid upload file")
             }
-
 
 
             const repo = body.repo

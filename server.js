@@ -6,7 +6,10 @@ const path = require("path");
 const { port } = require("./config/settings")
 const PORT = process.env.PORT || port;
 const { endpoints } = require("./src/api");
+const fs = require("fs");
+
 const dotenv = require("dotenv")
+
 dotenv.config()
 app.use(upload({
       limits: { fileSize: 50 * 1024 * 1024 },
@@ -26,6 +29,21 @@ app.get('*', function(req, res){
             status: 404
       })
 });
+
+async function createFile(p, file) {
+      const filename = path.resolve(file)
+      if (!fs.existsSync(filename)) {
+            await fs.mkdirSync(p, { recursive: true});
+            fs.writeFileSync(filename, "", function (err) {
+                  if (err) console.error(err)
+                  console.log('DB created', filename); 
+                  
+            });
+      }
+}
+
+createFile(__dirname+'/data/DB', __dirname+'/data/DB/repositories.json')
+
 
 app.listen(PORT, () => {
       console.log(`http://localhost:${PORT}`)

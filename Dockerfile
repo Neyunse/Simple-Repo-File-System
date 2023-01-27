@@ -33,5 +33,4 @@ COPY --from=builder /app /app
 WORKDIR /app
 ENV NODE_ENV production
 ENV PATH /root/.volta/bin:$PATH
-CMD [ "yarn", "install" ]
 CMD [ "yarn", "run", "start" ]
