@@ -20,5 +20,5 @@ kill_timeout = 5
     port = "443"
 
 [mounts]
-source="repofolder"
-destination="/src/repositories"
+source="persistent"
+destination="/data"
