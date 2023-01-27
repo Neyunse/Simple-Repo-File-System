@@ -10,12 +10,14 @@ const {
       getRepos
 } = require("./controllers")
 
-r.get('/all', getRepos)
-r.delete("/:repoid", deleteById);
-r.get("/:repo?", getAllFromRepo);
-r.get("/:repo?/:ver?", getVersionFromRepo);
-r.get("/:repo?/versions/historic", compareVersions);
-r.get("/:repo?/versions/latest", latestVersion);
-r.post("/upload/:repo?", uploadFile);
+const { getToken, verifyToken } = require("./controllers/auth")
+
+r.get('/all', getToken, verifyToken, getRepos)
+r.delete("/:repoid", getToken, verifyToken, deleteById);
+r.get("/:repo?",getToken, verifyToken, getAllFromRepo);
+r.get("/:repo?/:ver?", getToken, verifyToken, getVersionFromRepo);
+r.get("/:repo?/versions/historic", getToken, verifyToken,compareVersions);
+r.get("/:repo?/versions/latest", getToken, verifyToken,latestVersion);
+r.post("/upload/:repo?", getToken, verifyToken, uploadFile);
 
 module.exports = { r }
