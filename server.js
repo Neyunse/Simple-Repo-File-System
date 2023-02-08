@@ -12,7 +12,6 @@ const dotenv = require("dotenv")
 
 dotenv.config()
 app.use(upload({
-      limits: { fileSize: 50 * 1024 * 1024 },
       useTempFiles : true,
       tempFileDir : path.join(__dirname+'/tmp/')
 }));
