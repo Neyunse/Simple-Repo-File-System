@@ -1,3 +1,7 @@
+# Simple Repo File System
+this is a mini github clone intended for versioning files.
+
+
 ## JWT Authentication
 
 ### Admin
