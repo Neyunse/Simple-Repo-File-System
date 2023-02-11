@@ -8,7 +8,7 @@ kill_timeout = 5
   PORT = "8080"
 
 [mounts]
-  destination = "/data"
+  destination = "/app/data"
   source = "persistent"
 
 [[services]]
