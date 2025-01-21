@@ -11,13 +11,17 @@ const fs = require("fs");
 const dotenv = require("dotenv")
 
 dotenv.config()
+
+homePage = process.env.HOME_PAGE;
+
 app.use(upload({
       useTempFiles : true,
       tempFileDir : path.join(__dirname+'/tmp/')
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
+app.set("views", "./src/ejs");
+app.set("view engine", "ejs");
 app.use(cors("*"));
 app.use('/assets', express.static(path.join(__dirname, 'src', 'public')))
 
@@ -25,9 +29,8 @@ app.use('/repositories', express.static(path.join(__dirname, 'data', 'repositori
 
 app.use("/api", endpoints)
 
-app.get('*', function(req, res){
-      res.status(403)
-            .sendFile(path.join(__dirname, 'src', 'public', "403.html"))
+app.get("*", function (req, res) {
+  res.status(403).render("index", { homePage });
 });
 
 async function createFile(p, file) {
