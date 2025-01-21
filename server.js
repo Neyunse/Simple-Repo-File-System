@@ -12,7 +12,7 @@ const dotenv = require("dotenv")
 
 dotenv.config()
 
-homePage = process.env.HOME_PAGE;
+homePage = process.env.HOME_PAGE || "https://example.com";
 
 app.use(upload({
       useTempFiles : true,
